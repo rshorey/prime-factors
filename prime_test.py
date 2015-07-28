@@ -35,12 +35,12 @@ def is_it_prime(num, k=5):
             for j in range(0,s-1):
                 x = (x**2) % num
                 if x == 1:
-                    return "not prime"
+                    return False
                 if x == num-1:
                     break
             if x != num-1:
-                return "not prime"
-    return "probable prime"
+                return False
+    return True
 
 def decompose(num):
     s = 0
