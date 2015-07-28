@@ -28,19 +28,23 @@ def is_it_prime(num, k=5):
 
     for i in range(0,k):
         r = random.randint(3, num-2)
-        x = (r**d) % num #too slow, need to fix
+        print "start exp"
+        x = mod_exponent(r, d, num) #too slow, need to fix
+        print "end exp"
         if x in [1,num-1]:
             continue
         else:
+            print "start loop2"
             for j in range(0,s-1):
                 x = (x**2) % num
                 if x == 1:
-                    return False
+                    return "not prime"
                 if x == num-1:
                     break
+            print "end loop2"
             if x != num-1:
-                return False
-    return True
+                return "not prime"
+    return "probable prime"
 
 def decompose(num):
     s = 0
@@ -48,3 +52,6 @@ def decompose(num):
         s += 1
         num = num/2
     return (s, num)
+
+def mod_exponent(base, exp, mod):
+    return (base**exp) % mod
