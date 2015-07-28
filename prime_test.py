@@ -28,20 +28,16 @@ def is_it_prime(num, k=5):
 
     for i in range(0,k):
         r = random.randint(3, num-2)
-        print "start exp"
         x = mod_exponent(r, d, num) #too slow, need to fix
-        print "end exp"
         if x in [1,num-1]:
             continue
         else:
-            print "start loop2"
             for j in range(0,s-1):
                 x = (x**2) % num
                 if x == 1:
                     return "not prime"
                 if x == num-1:
                     break
-            print "end loop2"
             if x != num-1:
                 return "not prime"
     return "probable prime"
@@ -54,4 +50,17 @@ def decompose(num):
     return (s, num)
 
 def mod_exponent(base, exp, mod):
-    return (base**exp) % mod
+    #fast modular exponentation
+    #https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/fast-modular-exponentiation
+    binary_exp = str(bin(exp))
+    binary_list = [int(dig) for dig in binary_exp[2:]]
+    binary_list.reverse() #gets digits in right order to loop through
+    i = 0
+    result = 1
+    power = base
+    for bit in binary_list:
+        if bit == 1:
+            result *= power
+        power = power**2 % mod
+
+    return result % mod
