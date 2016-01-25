@@ -4,7 +4,7 @@
 ###thus, there is no warranty on prime numbers.
 #we are not responsible for death, dismemberment,
 #mockery, cryptographic insecurity, divorce,
-#writer's block, tendinitis, hardware failure,
+#writer's block, tendonitis, hardware failure,
 #math test failure, or failure of any kind not
 #listed here that may result from the use
 #of this random algorithm.
